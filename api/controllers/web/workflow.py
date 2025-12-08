@@ -29,7 +29,8 @@ from services.errors.llm import InvokeRateLimitError
 
 logger = logging.getLogger(__name__)
 
-#其中web_ns.route做的事情：把URL /web/workflows/run绑定到这个class上，并自动把post()注册为POST方法的handler
+
+# 其中web_ns.route做的事情：把URL /web/workflows/run绑定到这个class上，并自动把post()注册为POST方法的handler
 @web_ns.route("/workflows/run")
 class WorkflowRunApi(WebApiResource):
     @web_ns.doc("Run Workflow")
@@ -66,7 +67,7 @@ class WorkflowRunApi(WebApiResource):
         args = parser.parse_args()
 
         try:
-            #整个workflow执行引擎的入口
+            # 整个workflow执行引擎的入口
             response = AppGenerateService.generate(
                 app_model=app_model, user=end_user, args=args, invoke_from=InvokeFrom.WEB_APP, streaming=True
             )

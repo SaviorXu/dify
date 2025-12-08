@@ -125,8 +125,11 @@ class DefaultValue(BaseModel):
 
         return self
 
+
 '''dify后端中所有节点数据模型的基类，为所有节点的数据结构提供统一字段，比如：标题/描述/错误处理策略/默认值配置/重试配置
     BaseNodeData是一个pydantic模型+抽象基类'''
+
+
 class BaseNodeData(ABC, BaseModel): 
     title: str
     desc: str | None = None

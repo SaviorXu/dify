@@ -4,19 +4,20 @@
 '''
 from collections.abc import Mapping
 from typing import Any
-from core.workflow.nodes.base.node import Node
-from core.workflow.enums import NodeType
-from .entities import VariableExtractorNodeData
-from core.workflow.enums import ErrorStrategy, NodeType, WorkflowNodeExecutionStatus
+
+from core.workflow.enums import ErrorStrategy, NodeType
 from core.workflow.nodes.base.entities import BaseNodeData, RetryConfig
+from core.workflow.nodes.base.node import Node
+
+from .entities import VariableExtractorNodeData
 
 
 class VariableExtractorNode(Node):
     node_type = NodeType.VARIABLE_EXTRACTOR
 
-    _node_data : VariableExtractorNodeData
+    _node_data: VariableExtractorNodeData
 
-    def init_node_data(self, data:Mapping[str,Any]):
+    def init_node_data(self, data: Mapping[str, Any]):
         self._node_data = VariableExtractorNodeData.model_validata(data)
     
     def _get_error_strategy(self) -> ErrorStrategy | None:

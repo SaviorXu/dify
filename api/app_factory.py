@@ -94,7 +94,7 @@ def initialize_extensions(app: DifyApp):
         ext_otel,
         ext_request_logging,
     ]
-    #如果扩展模块定义了is_enabled()方法，调用它来判断是否启用
+    # 如果扩展模块定义了is_enabled()方法，调用它来判断是否启用
     for ext in extensions:
         short_name = ext.__name__.split(".")[-1]
         is_enabled = ext.is_enabled() if hasattr(ext, "is_enabled") else True

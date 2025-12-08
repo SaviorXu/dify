@@ -30,6 +30,7 @@ from .exc import (
 
 logger = logging.getLogger(__name__)
 
+
 def _target_mapping_from_item(mapping: MutableMapping[str, Sequence[str]], node_id: str, item: VariableOperationItem):
     selector_node_id = item.variable_selector[0]
     if selector_node_id != CONVERSATION_VARIABLE_NODE_ID:
@@ -184,7 +185,7 @@ class VariableAssignerNode(Node):
                     raise InvalidInputValueError(value=item.value)
 
                 # ==================== Execution Part
-                #执行真正的变量操作。
+                # 执行真正的变量操作。
                 updated_value = self._handle_item(
                     variable=variable,
                     operation=item.operation,
@@ -203,7 +204,7 @@ class VariableAssignerNode(Node):
 
         # The `updated_variable_selectors` is a list contains list[str] which not hashable,
         # remove the duplicated items first.
-        #如果变量是会话变量，则会写入数据库（持久化跨轮次会话）
+        # 如果变量是会话变量，则会写入数据库（持久化跨轮次会话）
         updated_variable_selectors = list(set(map(tuple, updated_variable_selectors)))
 
         conv_var_updater = self._conv_var_updater_factory()

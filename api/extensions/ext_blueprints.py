@@ -21,7 +21,7 @@ def init_app(app: DifyApp):
     from controllers.trigger import bp as trigger_bp
     from controllers.web import bp as web_bp
 
-#CORS 允许浏览器（前端）访问 flask api，否则跨域请求会被浏览器拒绝。
+# CORS 允许浏览器（前端）访问 flask api，否则跨域请求会被浏览器拒绝。
 
     CORS(
         service_api_bp,
@@ -38,7 +38,7 @@ def init_app(app: DifyApp):
         methods=["GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"],
         expose_headers=["X-Version", "X-Env"],
     )
-    app.register_blueprint(web_bp) #把蓝图挂到flask上
+    app.register_blueprint(web_bp)  # 把蓝图挂到flask上
 
     CORS(
         console_app_bp,
