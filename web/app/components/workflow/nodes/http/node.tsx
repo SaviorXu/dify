@@ -3,6 +3,9 @@ import React from 'react'
 import ReadonlyInputWithSelectVar from '../_base/components/readonly-input-with-select-var'
 import type { HttpNodeType } from './types'
 import type { NodeProps } from '@/app/components/workflow/types'
+
+//http Node在画布上的显示组件
+
 const Node: FC<NodeProps<HttpNodeType>> = ({
   id,
   data,

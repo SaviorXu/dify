@@ -13,6 +13,8 @@ import {
   useNodesReadOnly,
 } from '@/app/components/workflow/hooks'
 
+// HTTP Request节点配置面板的逻辑处理hook。负责把所有UI事件与workflow graph的数据同步。
+
 const useConfig = (id: string, payload: HttpNodeType) => {
   const { nodesReadOnly: readOnly } = useNodesReadOnly()
 

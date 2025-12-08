@@ -22,5 +22,6 @@ class VariableOperationItem(BaseModel):
 
 
 class VariableAssignerNodeData(BaseNodeData):
+    '''其成员变量和前端具有一一对应的关系'''
     version: str = "2"
     items: Sequence[VariableOperationItem] = Field(default_factory=list)

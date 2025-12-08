@@ -19,6 +19,7 @@ import { FileArrow01 } from '@/app/components/base/icons/src/vender/line/files'
 import type { NodePanelProps } from '@/app/components/workflow/types'
 
 const i18nPrefix = 'workflow.nodes.http'
+// 渲染http节点的右侧配置界面
 
 const Panel: FC<NodePanelProps<HttpNodeType>> = ({
   id,

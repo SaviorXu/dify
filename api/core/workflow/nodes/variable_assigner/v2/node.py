@@ -1,4 +1,5 @@
 import json
+import logging
 from collections.abc import Mapping, MutableMapping, Sequence
 from typing import Any, cast
 
@@ -27,6 +28,7 @@ from .exc import (
     VariableNotFoundError,
 )
 
+logger = logging.getLogger(__name__)
 
 def _target_mapping_from_item(mapping: MutableMapping[str, Sequence[str]], node_id: str, item: VariableOperationItem):
     selector_node_id = item.variable_selector[0]
@@ -182,7 +184,7 @@ class VariableAssignerNode(Node):
                     raise InvalidInputValueError(value=item.value)
 
                 # ==================== Execution Part
-
+                #执行真正的变量操作。
                 updated_value = self._handle_item(
                     variable=variable,
                     operation=item.operation,
@@ -201,6 +203,7 @@ class VariableAssignerNode(Node):
 
         # The `updated_variable_selectors` is a list contains list[str] which not hashable,
         # remove the duplicated items first.
+        #如果变量是会话变量，则会写入数据库（持久化跨轮次会话）
         updated_variable_selectors = list(set(map(tuple, updated_variable_selectors)))
 
         conv_var_updater = self._conv_var_updater_factory()

@@ -64,6 +64,7 @@ class NodeType(StrEnum):
     TRIGGER_PLUGIN = "trigger-plugin"
     HUMAN_INPUT = "human-input"
 
+
     @property
     def is_trigger_node(self) -> bool:
         """Check if this node type is a trigger node."""
